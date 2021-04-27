@@ -3,6 +3,7 @@ package com.example.stockcryptoalerter;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -14,13 +15,15 @@ public class MainActivity extends AppCompatActivity {
     ChipNavigationBar bottomNav;
     FragmentManager fragmentmanager;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);//
 
+        //bottom nav
         bottomNav = findViewById(R.id.bottom_nav);
+
+        //Show home fragment when app is first opened
         if (savedInstanceState == null) {
             bottomNav.setItemSelected(R.id.home, true);
             fragmentmanager = getSupportFragmentManager();
@@ -61,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
 
     }
 }

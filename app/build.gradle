@@ -1,8 +1,11 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.chaquo.python'
+
 
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
+
 
     defaultConfig {
         applicationId "com.example.stockcryptoalerter"
@@ -10,8 +13,22 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+        }
+
+        python {
+            buildPython "C:/Python39/python.exe"
+        }
+
+        sourceSets {
+            main {
+                python.srcDir "src/main/python"
+            }
+        }
+
     }
 
     buildTypes {
@@ -22,9 +39,15 @@ android {
     }
 }
 
+
+
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation "androidx.recyclerview:recyclerview:1.2.0"
+    // For control over item selection of both touch and mouse driven selection
+    implementation "androidx.recyclerview:recyclerview-selection:1.1.0"
+
     implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
@@ -35,8 +58,7 @@ dependencies {
     implementation 'com.ismaeldivita.chipnavigation:chip-navigation-bar:1.3.4'
     implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.4.0'
 
-    //botombar
+
+    //bottom bar
     implementation 'nl.joery.animatedbottombar:library:1.0.9'
-
-
 }

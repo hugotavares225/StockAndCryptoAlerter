@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:id="@+id/crypto_image"
+        android:src="@mipmap/ic_launcher_round"/>
+
+    <TextView
+        android:layout_marginLeft="5dp"
+        android:layout_below="@id/crypto_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Crypto_Name"
+        android:textStyle="bold"
+        android:id="@+id/crypto_name"
+        />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/crypto_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Crypto_Ticker"
+        android:textStyle="bold"
+        android:id="@+id/crypto_ticker"
+        />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="25dp"
+        android:layout_toRightOf="@id/crypto_ticker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Crypto_Price"
+        android:textStyle="bold"
+        android:id="@+id/crypto_price"
+        />
+
+    <ImageView
+        android:layout_alignParentRight="true"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/save_crypto_button"
+        android:src="@mipmap/ic_launcher_round" />
+
+    <ImageView
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/save_crypto_button"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:id="@+id/voice_crypto"
+        android:src="@mipmap/ic_launcher_round"/>
+
+        
+</RelativeLayout>

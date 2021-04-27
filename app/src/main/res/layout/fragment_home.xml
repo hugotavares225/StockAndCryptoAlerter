@@ -3,16 +3,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#03A9F4"
+    android:background="#65A1BC"
+    android:visibility="visible"
     tools:context=".HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_centerInParent="true"
+    <Button
+        android:id="@+id/button_stock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="26sp"
-        android:textColor="#fff"
-        android:text="Home" />
+        android:layout_alignParentTop="true"
+        android:text="Stocks"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="25dp"
+        />
+
+    <Button
+        android:id="@+id/button_crypto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Crypto"
+        android:layout_toEndOf="@id/button_stock"
+        android:layout_marginTop="25dp"
+        />
+
+    <EditText
+        android:drawablePadding="8dp"
+        android:drawableLeft="@drawable/ic_search"
+        android:id="@+id/search_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@id/button_stock"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/search_layout"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        android:hint="Search Here"
+        android:textSize="16sp"
+        android:layout_marginLeft="115dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_crypto"
+        android:text="RecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/search_field"
+        android:layout_marginTop="25dp"
+        />
+
 
 </RelativeLayout>
