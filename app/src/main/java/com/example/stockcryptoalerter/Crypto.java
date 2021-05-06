@@ -18,6 +18,10 @@ public class Crypto {
         Image = cImage;
     }
 
+    public Crypto(String cName){
+        Name = cName;
+    }
+
     //Getter
     public String getName() {
         return Name;

@@ -28,7 +28,6 @@ public class CryptoRecyclerViewAdapter extends RecyclerView.Adapter<CryptoRecycl
         this.context = ct;
         this.data = dt;
         this.dataFiltered = dt;
-
     }
     /*public RecyclerViewAdapter(Context ct, String s1[], String s2[], int img[]){
         context = ct;
@@ -48,19 +47,23 @@ public class CryptoRecyclerViewAdapter extends RecyclerView.Adapter<CryptoRecycl
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
-
-
-        holder.crypto_Name.setText(dataFiltered.get(position).getName());
+        /*holder.crypto_Name.setText(dataFiltered.get(position).getName());
         holder.crypto_Ticker.setText(dataFiltered.get(position).getTicker());
         holder.crypto_Price.setText(dataFiltered.get(position).getPrice());
-        holder.crypto_Image.setImageResource(dataFiltered.get(position).getImage());
+        holder.crypto_Image.setImageResource(dataFiltered.get(position).getImage());*/
+
+        ///unfiltered
+        holder.crypto_Name.setText(data.get(position).getName());
+        holder.crypto_Ticker.setText(data.get(position).getTicker());
+        holder.crypto_Price.setText(data.get(position).getPrice());
+        holder.crypto_Image.setImageResource(data.get(position).getImage());
 
     }
 
     @Override
     public int getItemCount() {
-        return dataFiltered.size();
+        //return dataFiltered.size();
+        return data.size();
     }
 
     @Override
