@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -37,9 +38,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.math.BigDecimal;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,10 +46,11 @@ public class HomeFragment extends Fragment implements CryptoRecyclerViewAdapter.
 
     private View v;
     private RecyclerView recyclerView ;
-    private List<Crypto> cryptoList = new ArrayList<>();;
+    private List<Crypto> cryptoList = new ArrayList<>();
     private RequestQueue queue, queue2;
-    private Uri uri = null;
-    //private List<Crypto> cryptoList;
+    private CryptoRecyclerViewAdapter cryptoRecyclerAdapter;
+    private SearchView searchView;
+
 
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
@@ -61,6 +60,12 @@ public class HomeFragment extends Fragment implements CryptoRecyclerViewAdapter.
     public HomeFragment() {
     }
 
+    //For data only
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getData();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,35 +74,32 @@ public class HomeFragment extends Fragment implements CryptoRecyclerViewAdapter.
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_home, container, false);
 
-        EditText mSearchField = v.findViewById(R.id.search_field);
+        searchView = v.findViewById(R.id.search_field);
         recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view_crypto);
-        final CryptoRecyclerViewAdapter cryptoRecyclerAdapter = new CryptoRecyclerViewAdapter(getContext(), cryptoList, this);
+
+        cryptoRecyclerAdapter = new CryptoRecyclerViewAdapter(getContext(), cryptoList, this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(cryptoRecyclerAdapter);
 
-
-
-        mSearchField.addTextChangedListener(new TextWatcher() {
+        //Search Bar
+        searchView.setIconifiedByDefault(false); //https://stackoverflow.com/questions/30455723/android-make-whole-search-bar-clickable
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public boolean onQueryTextSubmit(String query) {
+                cryptoRecyclerAdapter.filter(query);
+                //recyclerView.setAdapter(cryptoRecyclerAdapter);
+                return true;
+            }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
-            @Override
-            public void afterTextChanged(Editable s) {}
+            public boolean onQueryTextChange(String newText) {
+                cryptoRecyclerAdapter.filter(newText);
+                //recyclerView.setAdapter(cryptoRecyclerAdapter);
+                return true;
+            }
         });
 
-
         return v;
-    }
-
-    //For data only
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getData();
-
     }
 
     private void getData() {
@@ -117,17 +119,21 @@ public class HomeFragment extends Fragment implements CryptoRecyclerViewAdapter.
                             for (int i = 0; i < keys.length(); i++) {
                                 String key = keys.getString(i);
                                 JSONObject crypto_data = data_dict.getJSONObject(key);
-                                String crypto_ticker = crypto_data.getString("Symbol");
-                                String crypto_full_name = crypto_data.getString("FullName");
-                                String crypto_image_url = crypto_data.getString("ImageUrl");
 
-                                cryptoList.add(new Crypto(crypto_ticker, crypto_full_name, crypto_image_url));
+
+                                if (!crypto_data.getString("Symbol").equals("IBP")) { //IBP does not have imagurl
+                                    String crypto_image_url = crypto_data.getString("ImageUrl");
+                                    String crypto_ticker = crypto_data.getString("Symbol");
+                                    String crypto_full_name = crypto_data.getString("FullName");
+                                    cryptoList.add(new Crypto(crypto_ticker, crypto_full_name, crypto_image_url));
+                                }
+
                             }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            System.out.println(cryptoList.size());
                             System.out.println("FUCKKKK");
-
                         }
                     }
                 }, new Response.ErrorListener() {

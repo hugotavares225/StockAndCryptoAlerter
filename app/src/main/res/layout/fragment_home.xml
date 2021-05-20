@@ -26,26 +26,17 @@
         android:layout_marginTop="25dp"
         />
 
-    <EditText
-        android:drawablePadding="8dp"
-        android:drawableLeft="@drawable/ic_search"
-        android:id="@+id/search_field"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        android:layout_centerHorizontal="true"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/button_stock"
-        android:layout_marginTop="8dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:background="@drawable/search_layout"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:padding="10dp"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:paddingRight="20dp"
-        android:paddingBottom="10dp"
-        android:hint="Search Here"
-        android:textSize="16sp" />
+
+        android:textSize="1sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_crypto"
