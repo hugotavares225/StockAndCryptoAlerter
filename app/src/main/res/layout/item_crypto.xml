@@ -12,37 +12,30 @@
         android:id="@+id/crypto_image"
         android:src="@mipmap/ic_launcher_round"/>
 
+
     <TextView
-        android:layout_marginLeft="5dp"
-        android:layout_below="@id/crypto_image"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/crypto_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Crypto_Name"
+        android:text="name"
         android:textStyle="bold"
-        android:id="@+id/crypto_name"
+        android:id="@+id/crypto_full_name"
         />
 
     <TextView
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@id/crypto_name"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/crypto_image"
+        android:layout_below="@id/crypto_full_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Crypto_Ticker"
+        android:text="Price"
         android:textStyle="bold"
-        android:id="@+id/crypto_ticker"
+        android:id="@+id/price_item"
         />
 
-    <TextView
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="25dp"
-        android:layout_toRightOf="@id/crypto_ticker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Crypto_Price"
-        android:textStyle="bold"
-        android:id="@+id/crypto_price"
-        />
 
     <ImageView
         android:layout_alignParentRight="true"

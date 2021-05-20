@@ -1,52 +1,44 @@
 package com.example.stockcryptoalerter;
 
+import android.widget.ImageView;
+
+import java.net.URI;
+
 public class Crypto {
 
-    private String Name;
     private String Ticker;
-    private String Price;
-    private int Image;
+    private String Name;
+    private String ImageURL;
+    private final String URL_START = "https://www.cryptocompare.com";
 
     public Crypto() {
-
     }
 
-    public Crypto(String cName, String cTicker, String cPrice, int cImage) {
-        Name = cName;
-        Ticker = cTicker;
-        Price = cPrice;
-        Image = cImage;
+    public Crypto(String cTicker, String cName, String cImageURL) {
+        this.Ticker = cTicker;
+        this.Name = cName;
+        this.ImageURL = URL_START+cImageURL;
     }
 
-    public Crypto(String cName){
-        Name = cName;
-    }
 
     //Getter
+    public String getTicker() {
+        return Ticker; }
+
     public String getName() {
-        return Name;
-    }
+        return Name; }
 
-    public String getTicker() { return Ticker; }
-
-    public String getPrice() {
-        return Price;
-    }
-
-    public int getImage() { return Image; }
+    public String getImageURL() {
+        return ImageURL; }
 
     //Setter
-    public void setName(String name) {
-        Name = name;
-    }
-
     public void setTicker(String ticker) {
         Ticker = ticker;
     }
-
-    public void setPrice(String price) {
-        Price = price;
+    public void setName(String name) {
+        Name = name;
     }
-
-    public void setImage(int image) {Image = image;}
+    public void setImage(String image) {
+        ImageURL = image;
+    }
 }

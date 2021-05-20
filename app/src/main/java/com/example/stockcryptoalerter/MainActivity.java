@@ -28,8 +28,9 @@ public class MainActivity extends AppCompatActivity {
             bottomNav.setItemSelected(R.id.home, true);
             fragmentmanager = getSupportFragmentManager();
             HomeFragment homeFragment = new HomeFragment();
+
             fragmentmanager.beginTransaction()
-                    .replace(R.id.fragment_container, homeFragment)
+                    .replace(R.id.fragment_container, homeFragment, "home_fragment")
                     .commit();
         }
 
@@ -41,7 +42,11 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment = null;
                 switch (id){
                     case R.id.home:
+                        fragmentmanager = getSupportFragmentManager();
                         fragment = new HomeFragment();
+                        fragmentmanager.beginTransaction()
+                                .replace(R.id.fragment_container, fragment, "home_fragment")
+                                .commit();
                         break;
                     case R.id.alerts:
                         fragment = new AlertsFragment();

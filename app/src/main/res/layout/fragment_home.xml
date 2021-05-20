@@ -21,7 +21,6 @@
         android:id="@+id/button_crypto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:text="Crypto"
         android:layout_toEndOf="@id/button_stock"
         android:layout_marginTop="25dp"
@@ -34,6 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
+        android:layout_centerHorizontal="true"
         android:layout_below="@id/button_stock"
         android:layout_marginTop="8dp"
         android:background="@drawable/search_layout"
@@ -45,8 +45,7 @@
         android:paddingRight="20dp"
         android:paddingBottom="10dp"
         android:hint="Search Here"
-        android:textSize="16sp"
-        android:layout_marginLeft="115dp"/>
+        android:textSize="16sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_crypto"

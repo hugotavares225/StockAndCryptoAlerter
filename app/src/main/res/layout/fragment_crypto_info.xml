@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CryptoInfoFragment">
+
+    <ImageView
+        android:layout_centerHorizontal="true"
+        android:id="@+id/fc_crypto_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_search"/>
+
+    <TextView
+        android:id="@+id/fc_crypto_name"
+        android:layout_toEndOf="@id/fc_crypto_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="full stock name" />
+
+    <TextView
+
+        android:id="@+id/fc_crypto_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/fc_crypto_name"
+        android:text="price" />
+
+    <TextView
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/Graph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_blank_fragment" />
+
+</RelativeLayout>
