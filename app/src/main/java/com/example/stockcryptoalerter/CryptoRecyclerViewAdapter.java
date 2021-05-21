@@ -4,20 +4,16 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.CenterCrop;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.bumptech.glide.request.RequestOptions;
-
-
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class CryptoRecyclerViewAdapter extends RecyclerView.Adapter<CryptoRecyclerViewAdapter.MyViewHolder> {
@@ -86,11 +82,12 @@ public class CryptoRecyclerViewAdapter extends RecyclerView.Adapter<CryptoRecycl
         public void onItemClick(Crypto c);
     }
 
-    public void filter(String text) {
+    public void filterText(String text) {
         coinList.clear();
-        if(text.isEmpty()){
+        if (text.isEmpty()){
             coinList.addAll(coinListCopy);
-        } else{
+        }
+        else {
             text = text.toLowerCase();
             for(Crypto coin: coinListCopy){
                 if(coin.getName().toLowerCase().contains(text) || coin.getTicker().toLowerCase().contains(text)){
@@ -98,7 +95,14 @@ public class CryptoRecyclerViewAdapter extends RecyclerView.Adapter<CryptoRecycl
                 }
             }
         }
+
+
+        Collections.sort(coinList, new Comparator<Crypto>() {
+            @Override
+            public int compare(Crypto o1, Crypto o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        });
         notifyDataSetChanged();
     }
-
 }

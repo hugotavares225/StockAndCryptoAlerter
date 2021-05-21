@@ -93,12 +93,12 @@ public class CryptoInfoFragment extends Fragment {
                 .centerCrop()
                 .placeholder(R.drawable.alarm)
                 .into(cryptoImage);
-        getData();
-        //refresh(1000);
+        getPriceData();
         return v;
     }
 
-    private void getData() {
+
+    private void getPriceData() {
         queue = Volley.newRequestQueue(getActivity());
         String currency = "USD";
         String priceURL = "https://min-api.cryptocompare.com/data/price?fsym="+mParam1+"&tsyms="+currency;
@@ -132,15 +132,18 @@ public class CryptoInfoFragment extends Fragment {
             }
         });
         queue.add(request);
+        refreshPrice(5000);
     }
 
-    public void refresh (int milliseconds) {
+    /*
+    To refresh the price every x milliseconds
+     */
+    public void refreshPrice (int milliseconds) {
         final Handler handler = new Handler();
-
         final Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                getData();
+                getPriceData();
             }
         };
         handler.postDelayed(runnable, milliseconds);

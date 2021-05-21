@@ -20,16 +20,10 @@ public class Crypto {
         this.ImageURL = URL_START+cImageURL;
     }
 
-
     //Getter
-    public String getTicker() {
-        return Ticker; }
-
-    public String getName() {
-        return Name; }
-
-    public String getImageURL() {
-        return ImageURL; }
+    public String getTicker() { return Ticker; }
+    public String getName() { return Name; }
+    public String getImageURL() { return ImageURL; }
 
     //Setter
     public void setTicker(String ticker) {
